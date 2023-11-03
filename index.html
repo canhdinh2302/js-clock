@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Kindle Clock</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @font-face {
+        font-family: font7;
+        src: url("7segment.ttf");
+      }
+
+      * {
+        font-family: "font7";
+      }
+
+      body {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 8rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="txt">00:00</h1>
+
+    <script defer>
+      function showTime() {
+        const today = new Date();
+        let h = today.getHours();
+        let m = today.getMinutes();
+        m = checkTime(m);
+        document.getElementById("txt").innerHTML = h + ":" + m;
+      }
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        }
+        return i;
+      }
+
+      showTime();
+      setInterval(showTime, 10000);
+    </script>
+  </body>
+</html>
